@@ -55,7 +55,6 @@ const signOutUser = () => {
 
 onAuthStateChanged(auth, (user) => {
 	if (user) {
-		// sessionStorage.setItem("token", user.accessToken);
 		console.log("User is logged in");
 	} else {
 		console.log("User is signed out");

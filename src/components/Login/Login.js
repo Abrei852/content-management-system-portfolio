@@ -12,7 +12,9 @@ export default function Login({ setToken }) {
 
 	const signInUser = async (email, password) => {
 		await signIn(email, password);
-		setToken(getAuth().currentUser.accessToken);
+		if (getAuth().currentUser != null) {
+			setToken(getAuth().currentUser.accessToken);
+		}
 	};
 
 	return (
@@ -41,7 +43,9 @@ export default function Login({ setToken }) {
 					<div>
 						<button
 							type="submit"
-							onClick={() => signInUser(email, password)}
+							onClick={() =>
+								signInUser(email, password)
+							}
 						>
 							Submit
 						</button>
