@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import "firebase/database";
 
+
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_API_KEY,
 	authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -23,7 +24,7 @@ const firebaseAuth = getAuth(firebaseApp);
 
 const auth = getAuth();
 
-const signIn = async (email, password) => {
+const signInUser = async (email, password) => {
 	try {
 		await signInWithEmailAndPassword(
 			firebaseAuth,
@@ -55,11 +56,13 @@ const signOutUser = () => {
 
 onAuthStateChanged(auth, (user) => {
 	if (user) {
+
 		console.log("User is logged in");
+		console.log(user)
 	} else {
 		console.log("User is signed out");
 		sessionStorage.removeItem("token");
 	}
 });
 
-export { firebaseAuth, signIn, newUser, signOutUser };
+export { firebaseAuth, signInUser, newUser, signOutUser };

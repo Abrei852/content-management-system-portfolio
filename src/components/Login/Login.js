@@ -1,19 +1,23 @@
 import React, { useState } from "react";
-import { signIn } from "../../db/firebase";
+import { signInUser } from "../../db/firebase";
 import { getAuth } from "firebase/auth";
+import { useHistory } from "react-router-dom";
 
 export default function Login({ setToken }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const auth = getAuth();
+	const history = useHistory();
 
 	const onSubmit = async (event) => {
 		event.preventDefault();
 	};
 
-	const signInUser = async (email, password) => {
-		await signIn(email, password);
-		if (getAuth().currentUser != null) {
-			setToken(getAuth().currentUser.accessToken);
+	const signIn = async (email, password) => {
+		await signInUser(email, password);
+		if (auth.currentUser !== null) {
+			setToken(auth.currentUser.accessToken);
+			history.push("/dashboard");
 		}
 	};
 
@@ -26,6 +30,7 @@ export default function Login({ setToken }) {
 						<p>Email</p>
 						<input
 							type="text"
+							placeholder="Email"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
 						/>
@@ -44,7 +49,7 @@ export default function Login({ setToken }) {
 						<button
 							type="submit"
 							onClick={() =>
-								signInUser(email, password)
+								signIn(email, password)
 							}
 						>
 							Submit
