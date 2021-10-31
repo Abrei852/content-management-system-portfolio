@@ -1,5 +1,5 @@
 import React from 'react'
-import { signOutUser } from '../../db/firebase'
+import { signOutUser, getDbData } from '../../db/firebase'
 import { useHistory } from 'react-router-dom';
 
 export default function Dashboard() {
@@ -14,6 +14,7 @@ export default function Dashboard() {
         <div>
             <h1>Dashboard</h1>
             <button onClick={ () => signOut()}>Log out</button>
+            <button onClick={ () => getDbData("myexp")}>Get MyExp</button>
         </div>
     )
 }

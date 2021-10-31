@@ -6,8 +6,7 @@ import {
 	signOut,
 	onAuthStateChanged,
 } from "firebase/auth";
-import "firebase/database";
-
+import { getDatabase, ref, onValue } from "firebase/database";
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_API_KEY,
@@ -21,7 +20,9 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(firebaseApp);
+const db = getDatabase(firebaseApp);
 
+//Firebase Authentication
 const auth = getAuth();
 
 const signInUser = async (email, password) => {
@@ -32,7 +33,7 @@ const signInUser = async (email, password) => {
 			password
 		);
 	} catch (error) {
-		console.log(error);
+		console.log("Wrong username or password");
 	}
 };
 
@@ -56,13 +57,28 @@ const signOutUser = () => {
 
 onAuthStateChanged(auth, (user) => {
 	if (user) {
-
 		console.log("User is logged in");
-		console.log(user)
+		console.log(user);
 	} else {
 		console.log("User is signed out");
 		sessionStorage.removeItem("token");
 	}
 });
+//Firebase Authentication
 
-export { firebaseAuth, signInUser, newUser, signOutUser };
+//Firebase Realtime Database
+
+const getDbData = async (path) => {
+	try {
+		const getFromRef = ref(db, path);
+		onValue(getFromRef, (snapshot) => {
+			console.log(snapshot.val());
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+//Firebase Realtime Database
+
+export { firebaseAuth, signInUser, newUser, signOutUser, getDbData };
