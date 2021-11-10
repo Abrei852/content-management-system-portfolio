@@ -20,7 +20,7 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(firebaseApp);
-const db = getDatabase(firebaseApp);
+const firebaseDb = getDatabase(firebaseApp);
 
 //Firebase Authentication
 const auth = getAuth();
@@ -57,10 +57,10 @@ const signOutUser = () => {
 
 onAuthStateChanged(auth, (user) => {
 	if (user) {
-		console.log("User is logged in");
+		console.log("from watch User is logged in");
 		console.log(user);
 	} else {
-		console.log("User is signed out");
+		console.log("from watch User is signed out");
 		sessionStorage.removeItem("token");
 	}
 });
@@ -68,11 +68,12 @@ onAuthStateChanged(auth, (user) => {
 
 //Firebase Realtime Database
 
-const getDbData = async (path) => {
+const getMyExp = (path) => {
 	try {
-		const getFromRef = ref(db, path);
+		const getFromRef = ref(firebaseDb, path);
 		onValue(getFromRef, (snapshot) => {
 			console.log(snapshot.val());
+			return snapshot.val();
 		});
 	} catch (error) {
 		console.log(error);
@@ -81,4 +82,4 @@ const getDbData = async (path) => {
 
 //Firebase Realtime Database
 
-export { firebaseAuth, signInUser, newUser, signOutUser, getDbData };
+export { firebaseAuth, firebaseDb, signInUser, newUser, signOutUser, getMyExp };

@@ -1,39 +1,35 @@
 import React from "react";
 import "./App.css";
-import { signOutUser } from './db/firebase'
+import { signOutUser, firebaseAuth, firebaseDb } from './db/firebase'
 import Preferences from "./components/Preferences/Preferences";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Login from "./components/Login/Login";
-import { Route, Switch, Redirect, useHistory } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import useToken from "./useToken";
 
-function App() {
+export default function App() {
 	const { token, setToken } = useToken();
-	const history = useHistory();
 
-	if (!token) {
+	if (!token && firebaseAuth.currentUser !== null) {
 		signOutUser();
-		history.push("/login")
 	}
 
 	return (
 		<div className="App">
 			<Switch>
 				<Route exact path="/">
-					<Redirect to="/login" />
+					{!token ? <Redirect to="/login" /> : <Redirect to="/dashboard" /> }
 				</Route>
 				<Route path="/login">
-					<Login setToken={setToken} />
+					{!token ? <Login auth={firebaseAuth} setToken={setToken} /> : <Redirect to="/dashboard" /> }
 				</Route>
 				<Route path="/preferences">
 					<Preferences />
 				</Route>
 				<Route path="/dashboard">
-					<Dashboard />
+					{!token ? <Redirect to="/login" /> : <Dashboard db={firebaseDb} setToken={setToken}/> }
 				</Route>
 			</Switch>
 		</div>
 	);
 }
-
-export default App;
