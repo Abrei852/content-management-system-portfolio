@@ -58,7 +58,6 @@ const signOutUser = () => {
 onAuthStateChanged(auth, (user) => {
 	if (user) {
 		console.log("from watch User is logged in");
-		console.log(user);
 	} else {
 		console.log("from watch User is signed out");
 		sessionStorage.removeItem("token");

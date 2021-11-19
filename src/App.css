@@ -28,6 +28,16 @@
   color: #61dafb;
 }
 
+
+.shrink:hover {
+  transition: all 0.2s ease-in-out;
+  transform: scale(0.94);
+}
+
+.expand-sm:not(:hover) {
+  transition: all 0.3s ease-out;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
