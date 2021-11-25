@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import { signOutUser, firebaseAuth, firebaseDb } from './db/firebase'
-import Preferences from "./components/Preferences/Preferences";
-import Dashboard from "./components/Dashboard/Dashboard";
-import Login from "./components/Login/Login";
+import { signOutUser, firebaseAuth, firebaseDb } from 'db/firebase'
+import Preferences from "components/Preferences/Preferences";
+import Dashboard from "components/Dashboard/index";
+import Login from "components/Login/Login";
 import { Route, Switch, Redirect } from "react-router-dom";
-import useToken from "./useToken";
+import useToken from "useToken";
 
 export default function App() {
 	const { token, setToken } = useToken();

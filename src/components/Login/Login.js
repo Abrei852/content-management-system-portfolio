@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { signInUser } from "../../db/firebase";
+import { signInUser } from "db/firebase";
 
 export default function Login({ auth, setToken }) {
 	const [email, setEmail] = useState("");
