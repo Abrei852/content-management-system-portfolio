@@ -4,8 +4,9 @@ import { ref, onValue } from "firebase/database";
 import { Row, Col, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDatabase } from "@fortawesome/free-solid-svg-icons";
+import Title from "components/Dashboard/Title/Title";
 
-function ExperienceCard({ db, dbRef, cNameBg }) {
+function Container({ db, dbRef, cNameBg }) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -24,17 +25,7 @@ function ExperienceCard({ db, dbRef, cNameBg }) {
 
     return (
         <div className=" bg-light">
-            {/* <Container>
-                <Row>
-                    <Col xs="11">
-                    </Col>
-                    <Col xs="1" className="m-md-auto">
-                        <button>
-                            <FontAwesomeIcon icon={faPlus} />
-                        </button>
-                    </Col>
-                </Row>
-            </Container> */}
+            <Title h3="My Experience" cls="p-md-5" />
             <Row
                 xs={1}
                 md={3}
@@ -65,8 +56,8 @@ function ExperienceCard({ db, dbRef, cNameBg }) {
     );
 }
 
-ExperienceCard.prototype = {
+Container.prototype = {
     dbRef: PropTypes.element.isRequired,
 };
 
-export default ExperienceCard;
+export default Container;
