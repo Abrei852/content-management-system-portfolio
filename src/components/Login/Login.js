@@ -18,7 +18,7 @@ export default function Login({ auth, setToken }) {
 
 	return (
 		<div>
-			<h1>Log in</h1>
+			<h1>Log in page</h1>
 			<form onSubmit={onSubmit}>
 				<div>
 					<label>
