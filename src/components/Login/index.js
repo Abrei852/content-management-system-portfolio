@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { signInUser } from "db/firebase";
 
-export default function Login({ auth, setToken }) {
+export default function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -11,9 +11,6 @@ export default function Login({ auth, setToken }) {
 
 	const signIn = async (email, password) => {
 		await signInUser(email, password);
-		if (auth.currentUser !== null) {
-			setToken(auth.currentUser.accessToken);
-		}
 	};
 
 	return (

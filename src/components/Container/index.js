@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import Title from "components/Title/index";
+import { faDatabase } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ref, onValue } from "firebase/database";
 import { Row, Col, Card } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDatabase } from "@fortawesome/free-solid-svg-icons";
-import Title from "components/Dashboard/Title/Title";
 
 function Container({ db, dbRef, cNameBg }) {
     const [data, setData] = useState([]);
@@ -13,7 +13,6 @@ function Container({ db, dbRef, cNameBg }) {
         const fetchDbData = () => {
             const getFromRef = ref(db, dbRef);
             onValue(getFromRef, (snapshot) => {
-                console.log(snapshot.val());
                 setData(snapshot.val());
             });
         };
