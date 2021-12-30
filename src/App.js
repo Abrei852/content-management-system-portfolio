@@ -1,35 +1,52 @@
-import React from "react";
 import "./App.css";
-import { signOutUser, firebaseAuth, firebaseDb } from 'db/firebase'
-import Preferences from "components/Preferences/Preferences";
+import React, { useState, useEffect } from "react";
 import Dashboard from "components/Dashboard/index";
-import Login from "components/Login/Login";
+import Login from "components/Login/index";
+import Preferences from "components/Preferences/Preferences";
+import { firebaseAuth } from "db/firebase";
 import { Route, Switch, Redirect } from "react-router-dom";
-import useToken from "useToken";
 
 export default function App() {
-	const { token, setToken } = useToken();
+    const [user, setUser] = useState();
 
-	if (!token && firebaseAuth.currentUser !== null) {
-		signOutUser();
-	}
+    useEffect(() => {
+        firebaseAuth.onAuthStateChanged((firebaseUser) => {
+            if (firebaseUser) {
+                setUser(firebaseUser);
+                firebaseUser.getIdToken().then((idToken) => {
+                    sessionStorage.setItem("utkn", idToken);
+                });
+            } else {
+                setUser();
+                sessionStorage.removeItem("utkn");
+            }
+        });
+    }, []);
 
-	return (
-		<div className="App">
-			<Switch>
-				<Route exact path="/">
-					{!token ? <Redirect to="/login" /> : <Redirect to="/dashboard" /> }
-				</Route>
-				<Route path="/login">
-					{!token ? <Login auth={firebaseAuth} setToken={setToken} /> : <Redirect to="/dashboard" /> }
-				</Route>
-				<Route path="/preferences">
-					<Preferences />
-				</Route>
-				<Route path="/dashboard">
-					{!token ? <Redirect to="/login" /> : <Dashboard db={firebaseDb} setToken={setToken}/> }
-				</Route>
-			</Switch>
-		</div>
-	);
+    return (
+        <div className="App">
+            <Switch>
+                <Route exact path="/">
+                    {!user ? (
+                        <Redirect to="/login" />
+                    ) : (
+                        <Redirect to="/dashboard" />
+                    )}
+                </Route>
+                <Route path="/login">
+                    {!user ? <Login /> : <Redirect to="/dashboard" />}
+                </Route>
+                <Route path="/preferences">
+                    <Preferences />
+                </Route>
+                <Route path="/dashboard">
+                    {!user ? (
+                        <Redirect to="/login" />
+                    ) : (
+                        <Dashboard />
+                    )}
+                </Route>
+            </Switch>
+        </div>
+    );
 }
