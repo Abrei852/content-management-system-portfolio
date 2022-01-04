@@ -2,11 +2,9 @@ import { initializeApp } from "firebase/app";
 import {
 	getAuth,
 	signInWithEmailAndPassword,
-	createUserWithEmailAndPassword,
 	signOut,
-	onAuthStateChanged,
 } from "firebase/auth";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_API_KEY,
@@ -22,9 +20,6 @@ const firebaseApp = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(firebaseApp);
 const firebaseDb = getDatabase(firebaseApp);
 
-//Firebase Authentication
-const auth = getAuth();
-
 const signInUser = async (email, password) => {
 	try {
 		await signInWithEmailAndPassword(
@@ -37,48 +32,12 @@ const signInUser = async (email, password) => {
 	}
 };
 
-const newUser = async (email, password) => {
-	try {
-		await createUserWithEmailAndPassword(
-			firebaseAuth,
-			email,
-			password
-		).then((user) => {
-			console.log(user);
-		});
-	} catch (error) {
-		console.log(error);
-	}
-};
-
 const signOutUser = () => {
-	signOut(auth);
+	signOut(firebaseAuth);
 };
-
-onAuthStateChanged(auth, (user) => {
-	if (user) {
-		console.log("from watch User is logged in");
-	} else {
-		console.log("from watch User is signed out");
-		sessionStorage.removeItem("token");
-	}
-});
 //Firebase Authentication
 
-//Firebase Realtime Database
-
-const getMyExp = (path) => {
-	try {
-		const getFromRef = ref(firebaseDb, path);
-		onValue(getFromRef, (snapshot) => {
-			console.log(snapshot.val());
-			return snapshot.val();
-		});
-	} catch (error) {
-		console.log(error);
-	}
-};
 
 //Firebase Realtime Database
 
-export { firebaseAuth, firebaseDb, signInUser, newUser, signOutUser, getMyExp };
+export { firebaseAuth, firebaseDb, signInUser, signOutUser };
