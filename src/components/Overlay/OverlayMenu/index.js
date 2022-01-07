@@ -1,16 +1,16 @@
 import React from "react";
-import OptionButton from "components/Button/Option";
+import OptionButton from "components/Button/OptionOverlay";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function OverlayMenu(props) {
+export default function OverlayMenu({ object, deleteObject, updateObject }) {
     return (
         <React.Fragment>
-            <OptionButton editObject={props.object}>
-                <FontAwesomeIcon icon={faPen} color="#023e9e" className="expand-sm"/>
+            <OptionButton editObject={object} updateObject={updateObject}>
+                <FontAwesomeIcon icon={faPen} color="#023e9e" />
             </OptionButton>
-            <OptionButton removeObject={props.object}>
-                <FontAwesomeIcon icon={faTrash} color="#a60303" className="expand-sm"/>
+            <OptionButton removeObject={object} deleteObject={deleteObject}>
+                <FontAwesomeIcon icon={faTrash} color="#a60303" />
             </OptionButton>
         </React.Fragment>
     );
