@@ -16,7 +16,8 @@ export default function PopupDelete({ object, deleteObject, close }) {
             <div className="d-flex justify-content-between">
                 <Button
                     title="Delete"
-                    className="bg-secondary border-secondary expand-sm"
+                    variant="secondary"
+                    className="expand-sm"
                     onClick={() => {
                         deleteObject(objectId);
                         close();
@@ -26,7 +27,8 @@ export default function PopupDelete({ object, deleteObject, close }) {
                 </Button>
                 <Button
                     title="Cancel"
-                    className="bg-secondary border-secondary expand-sm"
+                    variant="secondary"
+                    className="expand-sm"
                     onClick={() => close()}
                 >
                     Cancel
