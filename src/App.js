@@ -40,11 +40,7 @@ export default function App() {
                     <Preferences />
                 </Route>
                 <Route path="/dashboard">
-                    {!user ? (
-                        <Redirect to="/login" />
-                    ) : (
-                        <Dashboard />
-                    )}
+                    {!user ? <Redirect to="/login" /> : <Dashboard />}
                 </Route>
             </Switch>
         </div>
