@@ -14,6 +14,7 @@
 .opt-b {
     border: none;
     background-color: transparent;
+    padding: 2px 5px !important;
 }
 
 .popup-content{
