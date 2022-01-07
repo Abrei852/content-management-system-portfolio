@@ -1,12 +1,12 @@
 import React from "react";
-import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function CloseButton({ close }) {
     return (
         <React.Fragment>
-            <button onClick={close}>
-                <FontAwesomeIcon icon={faWindowClose} />
+            <button className="close rounded-circle" onClick={close}>
+                <FontAwesomeIcon icon={faTimes} color="darkRed"/>
             </button>
         </React.Fragment>
     );
