@@ -1,10 +1,10 @@
 import "./style.css";
-import React from 'react'
+import React from "react";
 
 export default function Overlay(props) {
-    return(
+    return (
         <div className="overlay">
             {props.children}
         </div>
-    )
+    );
 }
