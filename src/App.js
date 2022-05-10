@@ -1,8 +1,8 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import Dashboard from "components/Dashboard/index";
-import Login from "components/Login/index";
-import Preferences from "components/Preferences/Preferences";
+import Dashboard from "pages/Dashboard/index";
+import Login from "pages/Login/index";
+import Preferences from "pages/Preferences/Preferences";
 import { firebaseAuth } from "db/firebase";
 import { Route, Switch, Redirect } from "react-router-dom";
 
