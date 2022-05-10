@@ -3,5 +3,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    display: grid;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(59, 59, 59, 0.63) !important;
+    border-radius: 0.25rem;
 }

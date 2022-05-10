@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Overlay(props) {
     return(
-        <div className="overlay bg-light hide rounded m-1">
+        <div className="overlay">
             {props.children}
         </div>
     )
