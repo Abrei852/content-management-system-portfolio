@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import Title from "components/Title";
 import { Button, Form } from "react-bootstrap";
 
-export default function PopupEdit({ close, object, updateObject }) {
+export default function PopupEdit({ close, object, editItemDb }) {
     const [formData, setFormData] = useState({
         id: object.id,
         title: object.val.title,
         specs: object.val.specs,
-        icon: object.val.icon,
     });
     function handleChange(event) {
         const name = event.target.name;
@@ -16,7 +15,7 @@ export default function PopupEdit({ close, object, updateObject }) {
     }
     function handleSubmit(event) {
         event.preventDefault(event);
-        updateObject(formData);
+        editItemDb(formData);
         close();
     }
     return (
@@ -47,17 +46,16 @@ export default function PopupEdit({ close, object, updateObject }) {
                     />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicIcon">
+                {/* <Form.Group className="mb-3" controlId="formBasicIcon">
                     <Form.Label>Icon name (FA)</Form.Label>
                     <Form.Control
                         type="text"
                         name="icon"
-                        required
                         placeholder="Change icon"
                         value={formData.icon}
                         onChange={handleChange}
                     />
-                </Form.Group>
+                </Form.Group> */}
 
                 <div className="d-flex justify-content-between pt-3">
                     <Button
