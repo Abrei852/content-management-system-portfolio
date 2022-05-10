@@ -4,7 +4,7 @@ import Dashboard from "pages/Dashboard/index";
 import Login from "pages/Login/index";
 import Preferences from "pages/Preferences/Preferences";
 import { firebaseAuth } from "db/firebase";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 export default function App() {
     const [user, setUser] = useState();
@@ -25,24 +25,28 @@ export default function App() {
 
     return (
         <div className="App">
-            <Switch>
-                <Route exact path="/">
-                    {!user ? (
-                        <Redirect to="/login" />
-                    ) : (
-                        <Redirect to="/dashboard" />
-                    )}
-                </Route>
-                <Route path="/login">
-                    {!user ? <Login /> : <Redirect to="/dashboard" />}
-                </Route>
-                <Route path="/preferences">
-                    <Preferences />
-                </Route>
-                <Route path="/dashboard">
-                    {!user ? <Redirect to="/login" /> : <Dashboard />}
-                </Route>
-            </Switch>
+            <Routes>
+                <Route
+                    exact
+                    path="/"
+                    element={
+                        !user ? (
+                            <Navigate to="/login" />
+                        ) : (
+                            <Navigate to="/dashboard" />
+                        )
+                    }
+                />
+                <Route
+                    path="/login"
+                    element={!user ? <Login /> : <Navigate to="/dashboard" />}
+                />
+                <Route path="/preferences" element={<Preferences />} />
+                <Route
+                    path="/dashboard"
+                    element={!user ? <Navigate to="/login" /> : <Dashboard />}
+                />
+            </Routes>
         </div>
     );
 }
