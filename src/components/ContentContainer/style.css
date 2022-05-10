@@ -1,0 +1,37 @@
+/* Grid */
+.row {
+    --bs-gutter-x: 0 !important;
+}
+
+.row > * {
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+    margin-top: 0 !important;
+}
+
+.col {
+    padding: 8px 0px;
+}
+/* Grid */
+
+/* Card */
+.card {
+    background-color: white;
+    transition: background-color 0.1s linear;
+}
+
+.card:hover {
+    border-color: transparent;
+}
+
+.card:hover .overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:not(:hover) .overlay {
+    display: none;
+}
+/* Card */
