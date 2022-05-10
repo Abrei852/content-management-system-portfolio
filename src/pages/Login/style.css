@@ -1,0 +1,25 @@
+.body-logn {
+    height: calc(100vh - 1rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.cntr-logn {
+    background-color: black;
+    padding: 30px;
+}
+
+.form {
+    display: block;
+}
+
+.inpt {
+    display: grid;
+    padding: 20px 0;
+}
+
+.inpt label {
+    padding: 10px 0;
+}
