@@ -7,6 +7,8 @@ export default function PopupEdit({ close, object, editItemDb }) {
         id: object.id,
         title: object.val.title,
         specs: object.val.specs,
+        overline: object.val.overline,
+        date: object.val.date,
     });
     function handleChange(event) {
         const name = event.target.name;
@@ -42,6 +44,30 @@ export default function PopupEdit({ close, object, editItemDb }) {
                         required
                         placeholder="Edit the Description"
                         value={formData.specs}
+                        onChange={handleChange}
+                    />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicDesc">
+                    <Form.Label>Overline</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="overline"
+                        required
+                        placeholder="Edit the Overline"
+                        value={formData.overline}
+                        onChange={handleChange}
+                    />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicDesc">
+                    <Form.Label>Date</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="date"
+                        required
+                        placeholder="Edit the Date"
+                        value={formData.date}
                         onChange={handleChange}
                     />
                 </Form.Group>
