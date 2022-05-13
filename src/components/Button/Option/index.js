@@ -5,6 +5,7 @@ import CloseButton from "components/Button/Close";
 import Popup from "reactjs-popup";
 import PopupDelete from "components/Popup/Delete";
 import PopupEdit from "components/Popup/Edit";
+import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 
 export default function Option({
@@ -52,3 +53,7 @@ export default function Option({
         </React.Fragment>
     );
 }
+
+Option.propTypes = {
+    edit: PropTypes.bool
+};
