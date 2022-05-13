@@ -7,11 +7,19 @@ p{
     padding: 10px;
 }
 
-
 .m-8{
     margin: 8px 0;
 }
 
 .border{
     border: 1px solid rgba(0,0,0,0.12);
+}
+
+/*External Classes*/
+/*Only when this component is used*/
+.card {
+    margin: 10px 0;
+}
+.cont-container {
+    width: 40%;
 }
