@@ -9,8 +9,8 @@ import { Button } from "react-bootstrap";
 
 export default function Option({
     children,
-    editObject,
-    removeObject,
+    edit,
+    object,
     deleteItemDb,
     editItemDb,
 }) {
@@ -20,7 +20,7 @@ export default function Option({
                 className="rounded"
                 trigger={
                     <Button
-                        title={editObject ? "Edit" : "Delete"}
+                        title={edit ? "Edit" : "Delete"}
                         className="opt-b btn-bg-transparent expand-sm-icon"
                     >
                         {children}
@@ -33,16 +33,16 @@ export default function Option({
                 {(close) => (
                     <div className="p-1 rounded">
                         <CloseButton close={close} />
-                        {editObject ? (
+                        {edit ? (
                             <PopupEdit
                                 close={close}
-                                object={editObject}
+                                object={object}
                                 editItemDb={editItemDb}
                             />
                         ) : (
                             <PopupDelete
                                 close={close}
-                                object={removeObject}
+                                object={object}
                                 deleteItemDb={deleteItemDb}
                             />
                         )}

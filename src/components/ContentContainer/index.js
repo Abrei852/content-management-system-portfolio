@@ -52,11 +52,11 @@ export default function ContentContainer(props) {
                 data.dbObjects.map((object) => (
                     <div className="card" key={object.id}>
                         <Overlay>
-                            <Option editObject={object} editItemDb={editItemDb}>
+                            <Option object={object} editItemDb={editItemDb} edit>
                                 <FontAwesomeIcon icon={faPen} color="#023e9e" />
                             </Option>
                             <Option
-                                removeObject={object}
+                                object={object}
                                 deleteItemDb={deleteItemDb}
                             >
                                 <FontAwesomeIcon
