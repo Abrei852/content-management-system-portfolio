@@ -1,14 +1,14 @@
 import "./style.css";
 import "reactjs-popup/dist/index.css";
 import React from "react";
-import CloseButton from "components/Button/Close";
+import ButtonClose from "components/Button/Close";
 import Popup from "reactjs-popup";
 import PopupDelete from "components/Popup/Delete";
 import PopupEdit from "components/Popup/Edit";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 
-export default function Option({
+export default function ButtonOption({
     children,
     edit,
     object,
@@ -33,7 +33,7 @@ export default function Option({
             >
                 {(close) => (
                     <div className="p-1">
-                        <CloseButton close={close} />
+                        <ButtonClose close={close} />
                         {edit ? (
                             <PopupEdit
                                 close={close}
@@ -54,6 +54,6 @@ export default function Option({
     );
 }
 
-Option.propTypes = {
+ButtonOption.propTypes = {
     edit: PropTypes.bool
 };

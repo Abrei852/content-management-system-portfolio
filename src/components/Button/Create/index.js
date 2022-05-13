@@ -4,9 +4,9 @@ import Popup from "reactjs-popup";
 import { Button } from "react-bootstrap";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import CloseButton from "../Close";
+import ButtonClose from "../Close";
 
-export default function CreateButton({ createItemDb }) {
+export default function ButtonCreate({ createItemDb }) {
     return (
         <div className="d-grid gap-2">
             <Popup
@@ -22,7 +22,7 @@ export default function CreateButton({ createItemDb }) {
             >
                 {(close) => (
                     <div className="p-2">
-                        <CloseButton close={close} />
+                        <ButtonClose close={close} />
                         <PopupCreate
                             close={close}
                             createItemDb={createItemDb}

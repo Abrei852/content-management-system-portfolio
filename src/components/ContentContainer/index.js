@@ -1,14 +1,14 @@
 import "./style.css";
 import React, { useState, useEffect } from "react";
 import Overlay from "components/Overlay";
-import Option from "components/Button/Option";
+import ButtonOption from "components/Button/Option";
 import PropTypes from "prop-types";
 import Title from "components/Title/index";
 import { firebaseDb } from "db/firebase";
 import { faPen, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ref, onValue, remove, update, set, push } from "firebase/database";
-import CreateButton from "components/Button/Create";
+import ButtonCreate from "components/Button/Create";
 
 export default function ContentContainer(props) {
     const [data, setData] = useState({ dbObjects: [] });
@@ -57,24 +57,24 @@ export default function ContentContainer(props) {
     return (
         <div className="cont-container">
             <Title h4={props.hTitle} cls="p-3 p-sm-3 p-md-4" />
-            <CreateButton createItemDb={createItemDb}/>
+            <ButtonCreate createItemDb={createItemDb}/>
             {data.dbObjects.length > 0 ? (
                 data.dbObjects.map((object) => (
                     <div className="card" key={object.id}>
                         <Overlay>
-                            <Option
+                            <ButtonOption
                                 object={object}
                                 editItemDb={editItemDb}
                                 edit
                             >
                                 <FontAwesomeIcon icon={faPen} color="#023e9e" />
-                            </Option>
-                            <Option object={object} deleteItemDb={deleteItemDb}>
+                            </ButtonOption>
+                            <ButtonOption object={object} deleteItemDb={deleteItemDb}>
                                 <FontAwesomeIcon
                                     icon={faTrash}
                                     color="#a60303"
                                 />
-                            </Option>
+                            </ButtonOption>
                         </Overlay>
                         {React.cloneElement(props.children, {
                             object: object,
