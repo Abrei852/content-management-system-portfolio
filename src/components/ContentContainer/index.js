@@ -77,6 +77,6 @@ export default function ContentContainer(props) {
     );
 }
 
-ContentContainer.prototype = {
-    dbRef: PropTypes.element.isRequired,
+ContentContainer.propTypes = {
+    dbRef: PropTypes.string.isRequired,
 };
