@@ -10,12 +10,19 @@ export default function Dashboard() {
     }
 
     return (
-        <div>
+        <React.Fragment>
             <Header signOut={signOut} />
-            <ContentContainer dbRef="workexp/" hTitle="Work Experience">
-                <Expandable/>
-            </ContentContainer>
-            {/* <ContentContainer dbRef="workexp/" hTitle="Work Experience"/> */}
-        </div>
+            <div className="d-flex justify-content-around">
+                <ContentContainer dbRef="workexp" hTitle="Work Experience">
+                        <Expandable />
+                </ContentContainer>
+                <ContentContainer
+                    dbRef="eduexp"
+                    hTitle="Educational Experience"
+                >
+                    <Expandable />
+                </ContentContainer>
+            </div>
+        </React.Fragment>
     );
 }
