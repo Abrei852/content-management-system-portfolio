@@ -57,7 +57,7 @@ export default function ContentContainer(props) {
     return (
         <div className="cont-container">
             <Title h4={props.hTitle} cls="p-3 p-sm-3 p-md-4" />
-            <ButtonCreate createItemDb={createItemDb}/>
+            <ButtonCreate h4={props.hTitle} createItemDb={createItemDb}/>
             {data.dbObjects.length > 0 ? (
                 data.dbObjects.map((object) => (
                     <div className="card expand-sm" key={object.id}>

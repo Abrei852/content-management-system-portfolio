@@ -1,20 +1,21 @@
 import React from "react";
+import ButtonClose from "../Close";
 import PopupCreate from "components/Popup/Create";
 import Popup from "reactjs-popup";
-import { Button } from "react-bootstrap";
+import PropTypes from "prop-types";
+import { Button} from "react-bootstrap";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ButtonClose from "../Close";
 
-export default function ButtonCreate({ createItemDb }) {
+export default function ButtonCreate({ h4, createItemDb}) {
     return (
         <div className="d-grid gap-2 expand-sm">
             <Popup
                 className="rounded"
                 trigger={
-                    <Button variant="dark">
-                        <FontAwesomeIcon icon={faPlus} color="white" />
-                    </Button>
+                        <Button variant="dark" title={"New " + h4}>
+                            <FontAwesomeIcon icon={faPlus} color="white" />
+                        </Button>
                 }
                 position="left center"
                 modal
@@ -32,4 +33,9 @@ export default function ButtonCreate({ createItemDb }) {
             </Popup>
         </div>
     );
+}
+
+ButtonCreate.propTypes = {
+    h4: PropTypes.string.isRequired,
+    createItemDb: PropTypes.func.isRequired
 }
