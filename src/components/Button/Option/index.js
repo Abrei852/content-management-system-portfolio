@@ -32,7 +32,7 @@ export default function Option({
                 closeOnDocumentClick={false}
             >
                 {(close) => (
-                    <div className="p-1 rounded">
+                    <div className="p-1">
                         <CloseButton close={close} />
                         {edit ? (
                             <PopupEdit
