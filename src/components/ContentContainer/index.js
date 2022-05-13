@@ -5,10 +5,10 @@ import Option from "components/Button/Option";
 import PropTypes from "prop-types";
 import Title from "components/Title/index";
 import { firebaseDb } from "db/firebase";
-import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ref, onValue, remove, update, set, push } from "firebase/database";
-import { Row, Col } from "react-bootstrap";
+import CreateButton from "components/Button/Create";
 
 export default function ContentContainer(props) {
     const [data, setData] = useState({ dbObjects: [] });
@@ -36,8 +36,17 @@ export default function ContentContainer(props) {
 
     function editItemDb(data) {
         const getFromRef = ref(firebaseDb, props.dbRef + data.id);
-        // push(getFromRef, {});
         update(getFromRef, {
+            title: data.title,
+            specs: data.specs,
+            overline: data.overline,
+            date: data.date,
+        });
+    }
+
+    function createItemDb(data) {
+        const getFromRef = ref(firebaseDb, props.dbRef);
+        push(getFromRef, {
             title: data.title,
             specs: data.specs,
             overline: data.overline,
@@ -48,17 +57,19 @@ export default function ContentContainer(props) {
     return (
         <div className="cont-container">
             <Title h4={props.hTitle} cls="p-3 p-sm-3 p-md-4" />
+            <CreateButton createItemDb={createItemDb}/>
             {data.dbObjects.length > 0 ? (
                 data.dbObjects.map((object) => (
                     <div className="card" key={object.id}>
                         <Overlay>
-                            <Option object={object} editItemDb={editItemDb} edit>
-                                <FontAwesomeIcon icon={faPen} color="#023e9e" />
-                            </Option>
                             <Option
                                 object={object}
-                                deleteItemDb={deleteItemDb}
+                                editItemDb={editItemDb}
+                                edit
                             >
+                                <FontAwesomeIcon icon={faPen} color="#023e9e" />
+                            </Option>
+                            <Option object={object} deleteItemDb={deleteItemDb}>
                                 <FontAwesomeIcon
                                     icon={faTrash}
                                     color="#a60303"
