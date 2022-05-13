@@ -36,51 +36,43 @@ export default function ContentContainer(props) {
 
     function editItemDb(data) {
         const getFromRef = ref(firebaseDb, props.dbRef + data.id);
-        push(getFromRef, {});
+        // push(getFromRef, {});
         update(getFromRef, {
             title: data.title,
             specs: data.specs,
+            overline: data.overline,
+            date: data.date,
         });
     }
 
     return (
-        <div className="">
+        <div className="cont-container">
             <Title h4={props.hTitle} cls="p-3 p-sm-3 p-md-4" />
-            <Row xs={1} sm={2} md={3} lg={4} className="p-md-2">
-                {data.dbObjects.length > 0 ? (
-                    data.dbObjects.map((object) => (
-                        <Col key={object.id}>
-                            <div className="card">
-                                <Overlay>
-                                    <Option
-                                        editObject={object}
-                                        editItemDb={editItemDb}
-                                    >
-                                        <FontAwesomeIcon
-                                            icon={faPen}
-                                            color="#023e9e"
-                                        />
-                                    </Option>
-                                    <Option
-                                        removeObject={object}
-                                        deleteItemDb={deleteItemDb}
-                                    >
-                                        <FontAwesomeIcon
-                                            icon={faTrash}
-                                            color="#a60303"
-                                        />
-                                    </Option>
-                                </Overlay>
-                                {React.cloneElement(props.children, {
-                                    object: object,
-                                })}
-                            </div>
-                        </Col>
-                    ))
-                ) : (
-                    <p>loading..</p>
-                )}
-            </Row>
+            {data.dbObjects.length > 0 ? (
+                data.dbObjects.map((object) => (
+                    <div className="card" key={object.id}>
+                        <Overlay>
+                            <Option editObject={object} editItemDb={editItemDb}>
+                                <FontAwesomeIcon icon={faPen} color="#023e9e" />
+                            </Option>
+                            <Option
+                                removeObject={object}
+                                deleteItemDb={deleteItemDb}
+                            >
+                                <FontAwesomeIcon
+                                    icon={faTrash}
+                                    color="#a60303"
+                                />
+                            </Option>
+                        </Overlay>
+                        {React.cloneElement(props.children, {
+                            object: object,
+                        })}
+                    </div>
+                ))
+            ) : (
+                <p>loading..</p>
+            )}
         </div>
     );
 }
