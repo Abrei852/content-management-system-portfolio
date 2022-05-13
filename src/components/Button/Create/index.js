@@ -8,7 +8,7 @@ import ButtonClose from "../Close";
 
 export default function ButtonCreate({ createItemDb }) {
     return (
-        <div className="d-grid gap-2">
+        <div className="d-grid gap-2 expand-sm">
             <Popup
                 className="rounded"
                 trigger={

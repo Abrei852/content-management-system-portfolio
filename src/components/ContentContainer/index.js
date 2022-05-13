@@ -60,7 +60,7 @@ export default function ContentContainer(props) {
             <ButtonCreate createItemDb={createItemDb}/>
             {data.dbObjects.length > 0 ? (
                 data.dbObjects.map((object) => (
-                    <div className="card" key={object.id}>
+                    <div className="card expand-sm" key={object.id}>
                         <Overlay>
                             <ButtonOption
                                 object={object}
