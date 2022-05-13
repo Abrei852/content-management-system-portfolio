@@ -24,7 +24,7 @@ export default function PopupEdit({ close, object, editItemDb }) {
         <React.Fragment>
             <Title h4={"Edit"} cls="p-1 text-center" />
             <Form className="py-3 px-1 mt-3 border-top" onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicTitle">
+                <Form.Group className="mb-3">
                     <Form.Label>Title</Form.Label>
                     <Form.Control
                         type="text"
@@ -36,7 +36,7 @@ export default function PopupEdit({ close, object, editItemDb }) {
                     />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicDesc">
+                <Form.Group className="mb-3">
                     <Form.Label>Description</Form.Label>
                     <Form.Control
                         type="text"
@@ -48,7 +48,7 @@ export default function PopupEdit({ close, object, editItemDb }) {
                     />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicDesc">
+                <Form.Group className="mb-3">
                     <Form.Label>Overline</Form.Label>
                     <Form.Control
                         type="text"
@@ -60,7 +60,7 @@ export default function PopupEdit({ close, object, editItemDb }) {
                     />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicDesc">
+                <Form.Group className="mb-3">
                     <Form.Label>Date</Form.Label>
                     <Form.Control
                         type="text"
