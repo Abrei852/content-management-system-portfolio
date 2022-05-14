@@ -2,16 +2,14 @@ import React from "react";
 import Title from "components/Title";
 import { Button } from "react-bootstrap";
 
-export default function PopupDelete({ object, deleteObject, close }) {
+export default function PopupDelete({ object, deleteItemDb, close }) {
     const objectId = object.id;
     const objectTitle = object.val.title;
     return (
         <React.Fragment>
             <Title h4={"Delete"} cls="p-1 text-center" />
             <div className="text-center py-3 px-1 my-3 border-top border-bottom">
-                You are about to delete the card "<b>{objectTitle}</b>", this
-                action can't be undone. <br />
-                Are you sure?
+                Delete "<b>{objectTitle}</b>" permanently?
             </div>
             <div className="d-flex justify-content-between">
                 <Button
@@ -19,7 +17,7 @@ export default function PopupDelete({ object, deleteObject, close }) {
                     variant="secondary"
                     className="expand-sm"
                     onClick={() => {
-                        deleteObject(objectId);
+                        deleteItemDb(objectId);
                         close();
                     }}
                 >
