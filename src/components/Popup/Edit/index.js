@@ -24,51 +24,53 @@ export default function PopupEdit({ close, object, editItemDb }) {
         <React.Fragment>
             <Title h4={"Edit"} cls="p-1 text-center" />
             <Form className="py-3 px-1 mt-3 border-top" onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
-                    <Form.Group className="mb-3">
-                        <Form.Label>Overline</Form.Label>
+                <div className="d-flex">
+                    <Form.Group className="mb-3 px-2">
+                        <Form.Group className="mb-3">
+                            <Form.Label>Overline</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="overline"
+                                required
+                                placeholder="Edit the Overline"
+                                value={formData.overline}
+                                onChange={handleChange}
+                            />
+                        </Form.Group>
+                        <Form.Label>Title</Form.Label>
                         <Form.Control
                             type="text"
-                            name="overline"
+                            name="title"
                             required
-                            placeholder="Edit the Overline"
-                            value={formData.overline}
+                            placeholder="Edit the title"
+                            value={formData.title}
                             onChange={handleChange}
                         />
                     </Form.Group>
-                    <Form.Label>Title</Form.Label>
-                    <Form.Control
-                        type="text"
-                        name="title"
-                        required
-                        placeholder="Edit the title"
-                        value={formData.title}
-                        onChange={handleChange}
-                    />
-                </Form.Group>
 
-                <Form.Group className="mb-3">
-                    <Form.Group className="mb-3">
-                        <Form.Label>Date</Form.Label>
+                    <Form.Group className="mb-3 px-2">
+                        <Form.Group className="mb-3">
+                            <Form.Label>Date</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="date"
+                                required
+                                placeholder="Edit the Date"
+                                value={formData.date}
+                                onChange={handleChange}
+                            />
+                        </Form.Group>
+                        <Form.Label>Description</Form.Label>
                         <Form.Control
                             type="text"
-                            name="date"
+                            name="specs"
                             required
-                            placeholder="Edit the Date"
-                            value={formData.date}
+                            placeholder="Edit the Description"
+                            value={formData.specs}
                             onChange={handleChange}
                         />
                     </Form.Group>
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control
-                        type="text"
-                        name="specs"
-                        required
-                        placeholder="Edit the Description"
-                        value={formData.specs}
-                        onChange={handleChange}
-                    />
-                </Form.Group>
+                </div>
 
                 {/* <Form.Group className="mb-3" controlId="formBasicIcon">
                     <Form.Label>Icon name (FA)</Form.Label>
@@ -81,10 +83,10 @@ export default function PopupEdit({ close, object, editItemDb }) {
                     />
                 </Form.Group> */}
 
-                <div className="d-flex justify-content-between pt-3">
+                <div className="d-flex justify-content-between pt-3 px-2">
                     <Button
                         title="Submit"
-                        variant="secondary"
+                        variant="success"
                         className="expand-sm"
                         type="submit"
                     >
@@ -92,7 +94,7 @@ export default function PopupEdit({ close, object, editItemDb }) {
                     </Button>
                     <Button
                         title="Cancel"
-                        variant="secondary"
+                        variant="danger"
                         className="expand-sm"
                         onClick={() => close()}
                     >
