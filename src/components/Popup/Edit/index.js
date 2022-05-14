@@ -25,6 +25,17 @@ export default function PopupEdit({ close, object, editItemDb }) {
             <Title h4={"Edit"} cls="p-1 text-center" />
             <Form className="py-3 px-1 mt-3 border-top" onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
+                    <Form.Group className="mb-3">
+                        <Form.Label>Overline</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="overline"
+                            required
+                            placeholder="Edit the Overline"
+                            value={formData.overline}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
                     <Form.Label>Title</Form.Label>
                     <Form.Control
                         type="text"
@@ -37,6 +48,17 @@ export default function PopupEdit({ close, object, editItemDb }) {
                 </Form.Group>
 
                 <Form.Group className="mb-3">
+                    <Form.Group className="mb-3">
+                        <Form.Label>Date</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="date"
+                            required
+                            placeholder="Edit the Date"
+                            value={formData.date}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
                     <Form.Label>Description</Form.Label>
                     <Form.Control
                         type="text"
@@ -44,30 +66,6 @@ export default function PopupEdit({ close, object, editItemDb }) {
                         required
                         placeholder="Edit the Description"
                         value={formData.specs}
-                        onChange={handleChange}
-                    />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label>Overline</Form.Label>
-                    <Form.Control
-                        type="text"
-                        name="overline"
-                        required
-                        placeholder="Edit the Overline"
-                        value={formData.overline}
-                        onChange={handleChange}
-                    />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label>Date</Form.Label>
-                    <Form.Control
-                        type="text"
-                        name="date"
-                        required
-                        placeholder="Edit the Date"
-                        value={formData.date}
                         onChange={handleChange}
                     />
                 </Form.Group>
