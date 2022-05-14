@@ -13,11 +13,11 @@ export default function Dashboard() {
         <React.Fragment>
             <Header signOut={signOut} />
             <div className="d-flex justify-content-around">
-                <ContentContainer dbRef="workexp" hTitle="Work Experience">
+                <ContentContainer dbRef="workexp/" hTitle="Work Experience">
                         <Expandable />
                 </ContentContainer>
                 <ContentContainer
-                    dbRef="eduexp"
+                    dbRef="eduexp/"
                     hTitle="Educational Experience"
                 >
                     <Expandable />
