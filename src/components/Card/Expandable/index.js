@@ -1,7 +1,7 @@
 import "./style.css";
 import React from "react";
 
-export default function Expandable({ object }) {
+export default function CardExpandable({ object }) {
 
     return (
         <div className="bg-ligh expandable-container">
