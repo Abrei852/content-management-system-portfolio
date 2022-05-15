@@ -19,6 +19,8 @@ export default function ContentContainer({
     clsCard,
 }) {
     const [data, setData] = useState({ dbObjects: [] });
+    const [object, setObject] = useState();
+
     useEffect(() => {
         const getFromRef = ref(firebaseDb, dbRef);
         onValue(getFromRef, (snapshot) => {
@@ -33,6 +35,20 @@ export default function ContentContainer({
         });
     }, [dbRef]);
 
+    //Object
+    function handleChange(event) {
+        setObject((prevState) => ({
+            ...prevState,
+            [event.name]: event.value,
+        }));
+    }
+    function onSubmit(event, id, close) {
+        event.preventDefault(event);
+        editItemDb(id, object);
+        close();
+    }
+
+    //Db
     function deleteItemDb(id) {
         const getFromRef = ref(firebaseDb, dbRef + id);
         remove(getFromRef).then(() => {
@@ -41,14 +57,9 @@ export default function ContentContainer({
         });
     }
 
-    function editItemDb(data) {
-        const getFromRef = ref(firebaseDb, dbRef + data.id);
-        update(getFromRef, {
-            title: data.title,
-            specs: data.specs,
-            overline: data.overline,
-            date: data.date,
-        });
+    function editItemDb(id, object) {
+        const getFromRef = ref(firebaseDb, dbRef + id);
+        update(getFromRef, object);
     }
 
     function createItemDb(data) {
@@ -81,7 +92,8 @@ export default function ContentContainer({
                             <Overlay>
                                 <ButtonOption
                                     object={object}
-                                    editItemDb={editItemDb}
+                                    handleChange={handleChange}
+                                    onSubmit={onSubmit}
                                     edit
                                 >
                                     <FontAwesomeIcon
