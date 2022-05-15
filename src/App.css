@@ -28,6 +28,18 @@
     color: #61dafb;
 }
 
+.font-12 {
+    font-size: 12px;
+}
+
+.mx-small {
+    margin: 0 1px;
+}
+
+.popup-content {
+    width: auto !important;
+}
+
 .text-size-medium {
     font-size: 18px;
 }
