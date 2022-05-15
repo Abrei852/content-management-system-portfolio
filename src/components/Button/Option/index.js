@@ -2,6 +2,7 @@ import "./style.css";
 import "reactjs-popup/dist/index.css";
 import React from "react";
 import ButtonClose from "components/Button/Close";
+import FormEdit from "components/Form/Edit";
 import Popup from "reactjs-popup";
 import PopupDelete from "components/Popup/Delete";
 import PopupEdit from "components/Popup/Edit";
@@ -11,9 +12,9 @@ import { Button } from "react-bootstrap";
 export default function ButtonOption({
     children,
     edit,
+    handleChange,
+    onSubmit,
     object,
-    deleteItemDb,
-    editItemDb,
 }) {
     return (
         <div className="button-option-container">
@@ -33,20 +34,19 @@ export default function ButtonOption({
                 closeOnDocumentClick={false}
             >
                 {(close) => (
-                    <div className="p-1">
+                    <div className="p-2">
                         <ButtonClose close={close} />
                         {edit ? (
                             <PopupEdit
                                 close={close}
                                 object={object}
-                                editItemDb={editItemDb}
-                            />
+                                handleChange={handleChange}
+                                onSubmit={onSubmit}
+                            >
+                                <FormEdit />
+                            </PopupEdit>
                         ) : (
-                            <PopupDelete
-                                close={close}
-                                object={object}
-                                deleteItemDb={deleteItemDb}
-                            />
+                            <PopupDelete close={close} object={object} />
                         )}
                     </div>
                 )}
@@ -56,5 +56,5 @@ export default function ButtonOption({
 }
 
 ButtonOption.propTypes = {
-    edit: PropTypes.bool
+    edit: PropTypes.bool,
 };
