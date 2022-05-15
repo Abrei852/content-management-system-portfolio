@@ -10,10 +10,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ref, onValue, remove, update, set, push } from "firebase/database";
 import ButtonCreate from "components/Button/Create";
 
-export default function ContentContainer(props) {
+export default function ContentContainer({
+    children,
+    dbRef,
+    hTitle,
+    clsContainer,
+    clsCardContainer,
+    clsCard,
+}) {
     const [data, setData] = useState({ dbObjects: [] });
     useEffect(() => {
-        const getFromRef = ref(firebaseDb, props.dbRef);
+        const getFromRef = ref(firebaseDb, dbRef);
         onValue(getFromRef, (snapshot) => {
             const dbData = [];
             snapshot.forEach((childSnapshot) => {
@@ -24,10 +31,10 @@ export default function ContentContainer(props) {
             });
             setData({ dbObjects: dbData });
         });
-    }, [props.dbRef]);
+    }, [dbRef]);
 
     function deleteItemDb(id) {
-        const getFromRef = ref(firebaseDb, props.dbRef + id);
+        const getFromRef = ref(firebaseDb, dbRef + id);
         remove(getFromRef).then(() => {
             const newData = data.dbObjects.filter((obj) => obj.id !== id);
             setData({ dbObjects: newData });
@@ -35,7 +42,7 @@ export default function ContentContainer(props) {
     }
 
     function editItemDb(data) {
-        const getFromRef = ref(firebaseDb, props.dbRef + data.id);
+        const getFromRef = ref(firebaseDb, dbRef + data.id);
         update(getFromRef, {
             title: data.title,
             specs: data.specs,
@@ -45,7 +52,7 @@ export default function ContentContainer(props) {
     }
 
     function createItemDb(data) {
-        const getFromRef = ref(firebaseDb, props.dbRef);
+        const getFromRef = ref(firebaseDb, dbRef);
         push(getFromRef, {
             title: data.title,
             specs: data.specs,
@@ -55,38 +62,52 @@ export default function ContentContainer(props) {
     }
 
     return (
-        <div className="cont-container">
-            <Title h4={props.hTitle} cls="p-3 p-sm-3 p-md-4" />
-            <ButtonCreate h4={props.hTitle} createItemDb={createItemDb} />
-            {data.dbObjects.length > 0 ? (
-                data.dbObjects.map((object) => (
-                    <div className="card expand-sm" key={object.id}>
-                        <Overlay>
-                            <ButtonOption
-                                object={object}
-                                editItemDb={editItemDb}
-                                edit
-                            >
-                                <FontAwesomeIcon icon={faPen} color="#023e9e" />
-                            </ButtonOption>
-                            <ButtonOption
-                                object={object}
-                                deleteItemDb={deleteItemDb}
-                            >
-                                <FontAwesomeIcon
-                                    icon={faTrash}
-                                    color="#a60303"
-                                />
-                            </ButtonOption>
-                        </Overlay>
-                        {React.cloneElement(props.children, {
-                            object: object,
-                        })}
-                    </div>
-                ))
-            ) : (
-                <p>loading..</p>
-            )}
+        <div className={clsContainer}>
+            <div className="card-top bg-dark">
+                <Title h4={hTitle} cls="text-size-medium" />
+                <ButtonCreate
+                    h4={hTitle}
+                    createItemDb={createItemDb}
+                    cls="btn-create"
+                />
+            </div>
+            <div className={clsCardContainer}>
+                {data.dbObjects.length > 0 ? (
+                    data.dbObjects.map((object) => (
+                        <div
+                            className={`expand-sm card ${clsCard}`}
+                            key={object.id}
+                        >
+                            <Overlay>
+                                <ButtonOption
+                                    object={object}
+                                    editItemDb={editItemDb}
+                                    edit
+                                >
+                                    <FontAwesomeIcon
+                                        icon={faPen}
+                                        color="#54a7f0"
+                                    />
+                                </ButtonOption>
+                                <ButtonOption
+                                    object={object}
+                                    deleteItemDb={deleteItemDb}
+                                >
+                                    <FontAwesomeIcon
+                                        icon={faTrash}
+                                        color="#f05e54"
+                                    />
+                                </ButtonOption>
+                            </Overlay>
+                            {React.cloneElement(children, {
+                                object: object,
+                            })}
+                        </div>
+                    ))
+                ) : (
+                    <p>loading..</p>
+                )}
+            </div>
         </div>
     );
 }
