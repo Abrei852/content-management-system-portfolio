@@ -18,8 +18,9 @@
 
 /* Content -> Card With Image */
 .cont-container-cwi {
-    width: 75%;
+    min-width: 75%;
     margin: auto;
+    max-width: 1080px;
 }
 
 /* Content -> Card Expandable */
@@ -76,6 +77,7 @@
 
 .card-cwi {
     margin: 10px;
+    padding: 10px;
 }
 
 /* Card -> Card Expandable */
