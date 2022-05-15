@@ -14,18 +14,31 @@ export default function Dashboard() {
         <React.Fragment>
             <Header signOut={signOut} />
             <div className="d-flex justify-content-around">
-                <ContentContainer dbRef="workexp/" hTitle="Work Experience">
+                <ContentContainer
+                    dbRef="workexp/"
+                    hTitle="Work Experience"
+                    clsContainer="cont-container-exp"
+                    clsCard="card-exp"
+                >
                     <CardExpandable />
                 </ContentContainer>
                 <ContentContainer
                     dbRef="eduexp/"
                     hTitle="Educational Experience"
+                    clsContainer="cont-container-exp"
+                    clsCard="card-exp"
                 >
                     <CardExpandable />
                 </ContentContainer>
             </div>
-            <div className="d-flex justify-content-around">
-                <ContentContainer dbRef="projects/" hTitle="Projects">
+            <div className="">
+                <ContentContainer
+                    dbRef="projects/"
+                    hTitle="Projects"
+                    clsContainer="cont-container-cwi"
+                    clsCardContainer="card-container"
+                    clsCard="card-cwi"
+                >
                     <CardExpandableWithImage />
                 </ContentContainer>
             </div>
