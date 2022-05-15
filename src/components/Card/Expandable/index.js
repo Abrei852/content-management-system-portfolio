@@ -4,7 +4,7 @@ import React from "react";
 export default function CardExpandable({ object }) {
 
     return (
-        <div className="bg-ligh expandable-container">
+        <div className="p-2">
             <div className="d-flex justify-content-between align-items-center m-8">
                 <p>{object.val.overline}</p>
                 <p>+</p>
