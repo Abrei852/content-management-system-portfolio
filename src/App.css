@@ -28,6 +28,10 @@
     color: #61dafb;
 }
 
+.text-size-medium {
+    font-size: 18px;
+}
+
 .expand-sm-icon:hover svg {
     transition: all 0.2s ease-in-out;
     transform: scale(1.1);
