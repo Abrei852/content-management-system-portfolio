@@ -5,6 +5,7 @@ import {
 	signOut,
 } from "firebase/auth";
 import { getDatabase } from "firebase/database";
+import { getStorage } from "firebase/storage"
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_API_KEY,
@@ -19,6 +20,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(firebaseApp);
 const firebaseDb = getDatabase(firebaseApp);
+const firebaseStorage = getStorage(firebaseApp);
 
 const signInUser = async (email, password) => {
 	try {
@@ -40,4 +42,4 @@ const signOutUser = () => {
 
 //Firebase Realtime Database
 
-export { firebaseAuth, firebaseDb, signInUser, signOutUser };
+export { firebaseAuth, firebaseDb,firebaseStorage, signInUser, signOutUser };
