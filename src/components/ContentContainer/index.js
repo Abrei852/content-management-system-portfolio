@@ -5,8 +5,8 @@ import ButtonOption from "components/Button/Option";
 import Overlay from "components/Overlay";
 import PropTypes from "prop-types";
 import Title from "components/Title/index";
-import { firebaseDb } from "db/firebase";
 import { faPen, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { firebaseDb } from "db/firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ref, onValue, remove, update, set, push } from "firebase/database";
 
