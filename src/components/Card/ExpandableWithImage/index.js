@@ -2,7 +2,6 @@ import React from "react";
 import "./style.css";
 
 export default function CardExpandableWithImage({ object }) {
-    // console.log(object.val.langs.length)
     return (
         <div className="p-2">
             <img src={object.val.img} className="image" alt="project"/>
