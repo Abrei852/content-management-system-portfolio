@@ -16,13 +16,14 @@ export default function ButtonOption({
     editItemDb,
 }) {
     return (
-        <React.Fragment>
+        <div className="button-option-container">
             <Popup
                 className="rounded"
+                lockScroll
                 trigger={
                     <Button
                         title={edit ? "Edit" : "Delete"}
-                        className="opt-b btn-bg-transparent expand-sm-icon"
+                        className="button-option opt-b btn-bg-transparent expand-sm-icon"
                     >
                         {children}
                     </Button>
@@ -50,7 +51,7 @@ export default function ButtonOption({
                     </div>
                 )}
             </Popup>
-        </React.Fragment>
+        </div>
     );
 }
 
