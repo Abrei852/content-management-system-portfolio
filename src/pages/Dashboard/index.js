@@ -1,9 +1,9 @@
 import React from "react";
+import CardExpandableWithImage from "components/Card/ExpandableWithImage";
+import CardExpandable from "components/Card/Expandable";
 import ContentContainer from "components/ContentContainer/index";
 import Header from "components/Header/index";
 import { signOutUser } from "db/firebase";
-import CardExpandable from "components/Card/Expandable";
-import CardExpandableWithImage from "components/Card/ExpandableWithImage";
 
 export default function Dashboard() {
     function signOut() {
