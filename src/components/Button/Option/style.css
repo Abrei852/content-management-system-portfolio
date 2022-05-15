@@ -11,13 +11,21 @@
     border: none;
 }
 
-.opt-b {
-    border: none;
-    background-color: transparent;
-    padding: 2px 5px !important;
+.button-option-container {
+    background-color: #212529bf;
+    width: 100%;
+    margin: 1px;
 }
 
-.popup-content{
-    width: 60% !important;
-    border-radius: 0.25rem !important;
+.button-option-container:hover {
+    background-color: #212529;
+}
+
+.button-option {
+    width: 100%;
+    padding: 15px !important;
+}
+
+.button-option svg {
+    font-size: 20px;
 }

@@ -14,6 +14,39 @@
 }
 /* Grid */
 
+/* Content Container*/
+
+/* Content -> Card With Image */
+.cont-container-cwi {
+    width: 75%;
+    margin: auto;
+}
+
+/* Content -> Card Expandable */
+.cont-container-exp {
+    width: 40%;
+}
+
+/* Content Container*/
+
+/* Card Top */
+.card-top {
+    position: sticky;
+    z-index: 99;
+    top: 0;
+    margin-top: 15px;
+    padding: 15px;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn-create {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+}
+
 /* Card */
 .card {
     background-color: white;
@@ -25,12 +58,28 @@
 
 .card:hover .overlay {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
 .card:not(:hover) .overlay {
     display: none;
+}
+
+/* Card -> Card With Image */
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card-cwi {
+    margin: 10px;
+}
+
+/* Card -> Card Expandable */
+.card-exp {
+    margin: 10px 0;
 }
 /* Card */
