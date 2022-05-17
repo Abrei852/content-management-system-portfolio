@@ -46,8 +46,8 @@ export default function FormEdit({ handleChange, onSubmit, object, close }) {
 }
 
 FormEdit.propTypes = {
-    handleChange: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired,
-    object: PropTypes.object.isRequired,
-    close: PropTypes.func.isRequired,
+    handleChange: PropTypes.func,
+    onSubmit: PropTypes.func,
+    object: PropTypes.object,
+    close: PropTypes.func,
 };
