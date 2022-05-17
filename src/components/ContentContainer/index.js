@@ -12,7 +12,7 @@ import { ref, onValue, remove, update, push } from "firebase/database";
 
 export default function ContentContainer({
     children,
-    dbRef,
+    loc,
     hTitle,
     clsContainer,
     clsCardContainer,
@@ -22,7 +22,7 @@ export default function ContentContainer({
     const [object, setObject] = useState();
 
     useEffect(() => {
-        const getFromRef = ref(firebaseDb, dbRef);
+        const getFromRef = ref(firebaseDb, loc);
         onValue(getFromRef, (snapshot) => {
             const dbData = [];
             snapshot.forEach((childSnapshot) => {
@@ -33,7 +33,7 @@ export default function ContentContainer({
             });
             setData({ dbObjects: dbData });
         });
-    }, [dbRef]);
+    }, [loc]);
 
     //Object
     function handleChange(event) {
@@ -50,7 +50,7 @@ export default function ContentContainer({
 
     //Db
     function deleteItemDb(id) {
-        const getFromRef = ref(firebaseDb, dbRef + id);
+        const getFromRef = ref(firebaseDb, loc + id);
         remove(getFromRef).then(() => {
             const newData = data.dbObjects.filter((obj) => obj.id !== id);
             setData({ dbObjects: newData });
@@ -58,12 +58,12 @@ export default function ContentContainer({
     }
 
     function editItemDb(id, object) {
-        const getFromRef = ref(firebaseDb, dbRef + id);
+        const getFromRef = ref(firebaseDb, loc + id);
         update(getFromRef, object);
     }
 
     function createItemDb(data) {
-        const getFromRef = ref(firebaseDb, dbRef);
+        const getFromRef = ref(firebaseDb, loc);
         push(getFromRef, {
             title: data.title,
             specs: data.specs,
@@ -125,5 +125,5 @@ export default function ContentContainer({
 }
 
 ContentContainer.propTypes = {
-    dbRef: PropTypes.string.isRequired,
+    loc: PropTypes.string.isRequired,
 };

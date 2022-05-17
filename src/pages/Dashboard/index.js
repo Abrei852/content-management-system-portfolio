@@ -15,7 +15,7 @@ export default function Dashboard() {
             <Header signOut={signOut} />
             <div className="d-flex justify-content-around">
                 <ContentContainer
-                    dbRef="workexp/"
+                    loc="workexp/"
                     hTitle="Work Experience"
                     clsContainer="cont-container-exp"
                     clsCard="card-exp"
@@ -23,7 +23,7 @@ export default function Dashboard() {
                     <CardExpandable />
                 </ContentContainer>
                 <ContentContainer
-                    dbRef="eduexp/"
+                    loc="eduexp/"
                     hTitle="Educational Experience"
                     clsContainer="cont-container-exp"
                     clsCard="card-exp"
@@ -33,7 +33,7 @@ export default function Dashboard() {
             </div>
             <div className="">
                 <ContentContainer
-                    dbRef="projects/"
+                    loc="projects/"
                     hTitle="Projects"
                     clsContainer="cont-container-cwi"
                     clsCardContainer="card-container"
