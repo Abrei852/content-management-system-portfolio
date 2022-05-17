@@ -15,6 +15,7 @@
     background-color: #212529bf;
     width: 100%;
     margin: 1px;
+    max-width: 150px;
 }
 
 .button-option-container:hover {
