@@ -1,9 +1,14 @@
 import React from "react";
+import PopupOption from "components/Popup/Option";
 import PropTypes from "prop-types";
-import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 
-export default function FormEdit({ handleChange, onSubmit, object, close }) {
+export default function ConentManageEdit({
+    close,
+    handleChange,
+    object,
+    onSubmit,
+}) {
     return (
         <Form
             className="border-top"
@@ -23,31 +28,18 @@ export default function FormEdit({ handleChange, onSubmit, object, close }) {
                     </Form.Group>
                 ))}
             </div>
-            <div className="d-flex justify-content-between pt-3 px-2">
-                <Button
-                    title="Submit"
-                    variant="success"
-                    className="expand-sm"
-                    type="submit"
-                >
-                    Submit
-                </Button>
-                <Button
-                    title="Cancel"
-                    variant="danger"
-                    className="expand-sm"
-                    onClick={() => close()}
-                >
-                    Cancel
-                </Button>
-            </div>
+            <PopupOption
+                btnTitle1="Submit"
+                btnTitle2="Cancel"
+                btnType1="submit"
+                close={close}
+            />
         </Form>
     );
 }
 
-FormEdit.propTypes = {
+ConentManageEdit.propTypes = {
     handleChange: PropTypes.func,
     onSubmit: PropTypes.func,
     object: PropTypes.object,
-    close: PropTypes.func,
 };

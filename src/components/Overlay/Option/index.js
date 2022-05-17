@@ -2,19 +2,20 @@ import "./style.css";
 import "reactjs-popup/dist/index.css";
 import React from "react";
 import ButtonClose from "components/Button/Close";
-import FormEdit from "components/Form/Edit";
 import Popup from "reactjs-popup";
-import PopupDelete from "components/Popup/Delete";
-import PopupEdit from "components/Popup/Edit";
+import PopupContent from "components/Popup/Content";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function ButtonOption({
-    children,
+export default function OverlayOption({
     edit,
+    faIcon,
+    faColor,
     handleChange,
-    onSubmit,
     object,
+    onDelete,
+    onSubmit,
 }) {
     return (
         <div className="button-option-container">
@@ -26,7 +27,7 @@ export default function ButtonOption({
                         title={edit ? "Edit" : "Delete"}
                         className="button-option opt-b btn-bg-transparent expand-sm-icon"
                     >
-                        {children}
+                        <FontAwesomeIcon icon={faIcon} color={faColor} />
                     </Button>
                 }
                 position="left center"
@@ -36,18 +37,14 @@ export default function ButtonOption({
                 {(close) => (
                     <div className="p-2">
                         <ButtonClose close={close} />
-                        {edit ? (
-                            <PopupEdit
-                                close={close}
-                                object={object}
-                                handleChange={handleChange}
-                                onSubmit={onSubmit}
-                            >
-                                <FormEdit />
-                            </PopupEdit>
-                        ) : (
-                            <PopupDelete close={close} object={object} />
-                        )}
+                        <PopupContent
+                            close={close}
+                            edit={edit}
+                            handleChange={handleChange}
+                            object={object}
+                            onDelete={onDelete}
+                            onSubmit={onSubmit}
+                        />
                     </div>
                 )}
             </Popup>
@@ -55,6 +52,11 @@ export default function ButtonOption({
     );
 }
 
-ButtonOption.propTypes = {
+OverlayOption.propTypes = {
+    faColor: PropTypes.string,
     edit: PropTypes.bool,
+    handleChange: PropTypes.func,
+    object: PropTypes.object.isRequired,
+    onDelete: PropTypes.func,
+    onSubmit: PropTypes.func,
 };

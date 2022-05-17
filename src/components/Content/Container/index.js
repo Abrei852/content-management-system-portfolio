@@ -1,13 +1,12 @@
 import "./style.css";
 import React, { useState, useEffect } from "react";
 import ButtonCreate from "components/Button/Create";
-import ButtonOption from "components/Button/Option";
-import Overlay from "components/Overlay";
+import OverlayOption from "components/Overlay/Option";
+import OverlayContainer from "components/Overlay/Container";
 import PropTypes from "prop-types";
 import Title from "components/Title/index";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { firebaseDb } from "db/firebase";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ref, onValue, remove, update, push } from "firebase/database";
 
 export default function ContentContainer({
@@ -20,7 +19,6 @@ export default function ContentContainer({
 }) {
     const [data, setData] = useState({ dbObjects: [] });
     const [object, setObject] = useState();
-
     useEffect(() => {
         const getFromRef = ref(firebaseDb, loc);
         onValue(getFromRef, (snapshot) => {
@@ -44,22 +42,22 @@ export default function ContentContainer({
     }
     function onSubmit(event, id, close) {
         event.preventDefault(event);
-        editItemDb(id, object);
+        if (id && object) {
+            const getFromRef = ref(firebaseDb, loc + id);
+            update(getFromRef, object);
+            setObject();
+        }
         close();
     }
-
-    //Db
-    function deleteItemDb(id) {
-        const getFromRef = ref(firebaseDb, loc + id);
-        remove(getFromRef).then(() => {
-            const newData = data.dbObjects.filter((obj) => obj.id !== id);
-            setData({ dbObjects: newData });
-        });
-    }
-
-    function editItemDb(id, object) {
-        const getFromRef = ref(firebaseDb, loc + id);
-        update(getFromRef, object);
+    function onDelete(id, close) {
+        if (id) {
+            const getFromRef = ref(firebaseDb, loc + id);
+            remove(getFromRef).then(() => {
+                const newData = data.dbObjects.filter((obj) => obj.id !== id);
+                setData({ dbObjects: newData });
+            });
+        }
+        close();
     }
 
     function createItemDb(data) {
@@ -89,28 +87,22 @@ export default function ContentContainer({
                             className={`expand-sm card ${clsCard}`}
                             key={object.id}
                         >
-                            <Overlay>
-                                <ButtonOption
-                                    object={object}
-                                    handleChange={handleChange}
-                                    onSubmit={onSubmit}
+                            <OverlayContainer>
+                                <OverlayOption
                                     edit
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faPen}
-                                        color="#54a7f0"
-                                    />
-                                </ButtonOption>
-                                <ButtonOption
+                                    faIcon={faPen}
+                                    faColor="#54a7f0"
+                                    handleChange={handleChange}
                                     object={object}
-                                    deleteItemDb={deleteItemDb}
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faTrash}
-                                        color="#f05e54"
-                                    />
-                                </ButtonOption>
-                            </Overlay>
+                                    onSubmit={onSubmit}
+                                />
+                                <OverlayOption
+                                    faIcon={faTrash}
+                                    faColor="#f05e54"
+                                    object={object}
+                                    onDelete={onDelete}
+                                />
+                            </OverlayContainer>
                             {React.cloneElement(children, {
                                 object: object,
                             })}
