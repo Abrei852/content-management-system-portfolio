@@ -2,7 +2,7 @@ import "./style.css";
 import React, { useState, useEffect } from "react";
 import ButtonCreate from "components/Button/Create";
 import OverlayOption from "components/Overlay/Option";
-import OverlayContainer from "components/Overlay/Container";
+import OverlayContainer from "components/Overlay";
 import PropTypes from "prop-types";
 import Title from "components/Title/index";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";

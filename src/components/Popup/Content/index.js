@@ -1,6 +1,6 @@
 import React from "react";
-import ConentManageEdit from "components/Content/Manage/Edit";
-import ContentManageDelete from "components/Content/Manage/Delete";
+import ConentManageEdit from "components/Content/Edit";
+import ContentManageDelete from "components/Content/Delete";
 import PropTypes from "prop-types";
 import Title from "components/Title";
 

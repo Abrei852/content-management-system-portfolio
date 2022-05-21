@@ -1,7 +1,7 @@
 import React from "react";
 import CardExpandableWithImage from "components/Card/ExpandableWithImage";
 import CardExpandable from "components/Card/Expandable";
-import ContentContainer from "components/Content/Container/index";
+import ContentContainer from "components/Content/index";
 import Header from "components/Header/index";
 import { signOutUser } from "db/firebase";
 
