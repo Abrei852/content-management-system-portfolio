@@ -1,11 +1,7 @@
 import { initializeApp } from "firebase/app";
-import {
-	getAuth,
-	signInWithEmailAndPassword,
-	signOut,
-} from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
-import { getStorage } from "firebase/storage"
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_API_KEY,
@@ -22,24 +18,4 @@ const firebaseAuth = getAuth(firebaseApp);
 const firebaseDb = getDatabase(firebaseApp);
 const firebaseStorage = getStorage(firebaseApp);
 
-const signInUser = async (email, password) => {
-	try {
-		await signInWithEmailAndPassword(
-			firebaseAuth,
-			email,
-			password
-		);
-	} catch (error) {
-		console.log("Wrong username or password");
-	}
-};
-
-const signOutUser = () => {
-	signOut(firebaseAuth);
-};
-//Firebase Authentication
-
-
-//Firebase Realtime Database
-
-export { firebaseAuth, firebaseDb,firebaseStorage, signInUser, signOutUser };
+export { firebaseAuth, firebaseDb, firebaseStorage };
