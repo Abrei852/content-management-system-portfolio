@@ -10,11 +10,11 @@ export default function PopupOption({
     close,
 }) {
     return (
-        <div className="d-flex justify-content-between pt-3 px-2">
+        <div className="d-flex justify-content-between padding-top-20">
             <Button
                 title={btnTitle1}
                 variant="success"
-                className="expand-sm"
+                className="expand-sm font-14"
                 type={btnType1}
                 onClick={btnClick}
             >
@@ -23,7 +23,7 @@ export default function PopupOption({
             <Button
                 title={btnTitle2}
                 variant="danger"
-                className="expand-sm"
+                className="expand-sm font-14"
                 onClick={() => close()}
             >
                 {btnTitle2}
