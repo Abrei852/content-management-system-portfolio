@@ -37,6 +37,19 @@
     transition: all 0.3s ease-in-out;
 }
 
+.drop-down-text{
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.cv-picker{
+    background-color: transparent !important;
+    border: none !important;
+    font-size: 13px !important;
+    margin-right: 10px;
+}
+
 .rotate:hover .gear {
     transform: rotate(-90deg);
 }

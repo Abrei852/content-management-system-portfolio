@@ -5,6 +5,7 @@ import Login from "pages/Login/index";
 import Preferences from "pages/Preferences/Preferences";
 import { firebaseAuth } from "db/firebase";
 import { Route, Routes, Navigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
     const [user, setUser] = useState();
@@ -47,6 +48,7 @@ export default function App() {
                     element={!user ? <Navigate to="/login" /> : <Dashboard />}
                 />
             </Routes>
+            <ToastContainer />
         </div>
     );
 }

@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 export default function Title({ h4, cls }) {
     return (
-        <div>
+        <React.Fragment>
             <h4 className={`${cls}`}>{h4}</h4>
-        </div>
+        </React.Fragment>
     );
 }
 
