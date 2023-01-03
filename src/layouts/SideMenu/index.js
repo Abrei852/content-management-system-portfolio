@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Preferences() {
+export default function SideMenu() {
     return (
         <div>
-            <h1>Preferences</h1>
+            LInks
         </div>
     )
 }

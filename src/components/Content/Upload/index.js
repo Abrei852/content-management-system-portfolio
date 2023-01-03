@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "react-toastify/dist/ReactToastify.css";
 import PopupOption from "components/Popup/Option";
 import { Button } from "react-bootstrap";
