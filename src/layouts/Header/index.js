@@ -52,26 +52,24 @@ export default function Header({ signOut }) {
 								</div>
 							</Dropdown.Item>
 							<Dropdown.Item
-								className="rotate"
-								as="button"
+								className="rotate d-flex justify-content-between align-items-center"
 								title="settings"
+								href="settings"
 							>
-								<div className="d-flex justify-content-between align-items-center">
-									<h6
-										style={{
-											marginBottom: 0 + "px",
-											fontSize: 12 + "px",
-											fontWeight: "normal",
-										}}
-									>
-										Settings
-									</h6>
-									<FontAwesomeIcon
-										icon={faCog}
-										style={{ fontSize: 12 + "px" }}
-										className="gear"
-									/>
-								</div>
+								<h6
+									style={{
+										marginBottom: 0 + "px",
+										fontSize: 12 + "px",
+										fontWeight: "normal",
+									}}
+								>
+									Settings
+								</h6>
+								<FontAwesomeIcon
+									icon={faCog}
+									style={{ fontSize: 12 + "px" }}
+									className="gear"
+								/>
 							</Dropdown.Item>
 							<Dropdown.Divider />
 							<Dropdown.Item
