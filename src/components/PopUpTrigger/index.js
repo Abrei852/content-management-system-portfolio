@@ -8,7 +8,7 @@ export default function PopUpTrigger({ children, firebaseStorage }) {
 			<Popup modal trigger={children} lockScroll>
 				{(close) => (
 					<React.Fragment>
-						<Upload close={close} firebaseStorage={firebaseStorage}/>
+						<Upload close={close} firebaseStorage={firebaseStorage} firebaseFolder={"cv"}/>
 					</React.Fragment>
 				)}
 			</Popup>
