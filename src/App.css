@@ -88,8 +88,14 @@
 	transition: all 0.2s ease-out;
 }
 
+.hide-text-elipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 .pointer {
-	cursor: default;
+	cursor: pointer;
 }
 
 .btn-primary:focus,
@@ -142,4 +148,8 @@ p {
 .popup-content {
 	animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 	-webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+}
+
+.width-100 {
+	width: 100px;
 }
