@@ -98,21 +98,21 @@ export default function Upload({ close, firebaseStorage, firebaseFolder }) {
 			</div>
 			<div className="padding-20 background-light-grey border-radius-5 mb-3">
 				<div className="d-flex justify-content-between align-items-center ">
-					<p className="font-14">Select file (PDF)</p>
+					<p className="font-12">Upload a new file (PDF)</p>
 
 					<FontAwesomeIcon
 						icon={faCloudUploadAlt}
 						title="Select a file"
 						onClick={() => openFileSelector()}
-						className="pointer expand-sm"
+						className="font-12 pointer expand-sm"
 					/>
 				</div>
 				{filesContent.map((file, id) => (
 					<div
 						key={id}
-						className="d-flex justify-content-between align-items-center"
+						className="d-flex justify-content-between align-items-center mt-2"
 					>
-						<p className="font-12">{file.name}</p>
+						<p className="font-12">- {file.name}</p>
 					</div>
 				))}
 			</div>

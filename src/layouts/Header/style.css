@@ -1,5 +1,5 @@
 .dropdown-toggle {
-    width: 100px;
+    width: 90px;
     text-overflow: ellipsis;
     overflow: hidden;
     text-align: left !important;
@@ -24,8 +24,8 @@
 
 .dropdown-item {
     font-size: 11px !important;
-    padding: 5px 8px !important;
-    margin: 4px 0;
+    padding: 10px !important;
+    margin: 0;
 }
 
 .dropdown-item:active {
